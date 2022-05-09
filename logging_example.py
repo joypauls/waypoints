@@ -20,7 +20,7 @@ def simple_logging_decorator(func):
   # function to be returned
   @wraps(func)
   def wrapper_func(*args, **kwargs):
-    output = func()
+    output = func(*args, **kwargs)
     if output:
       logger.debug(output)
       # print("| {} | {} | {}".format(func.__name__, datetime.today().strftime("%Y-%m-%d %H:%M:%S"), output))

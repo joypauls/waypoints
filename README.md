@@ -2,7 +2,11 @@
 
 > WIP :)
 
-A minimal metadata+logging library based on structlog.
+<p align="center">
+  <img src="https://live.staticflickr.com/8288/7781520366_7eba8b373c_k.jpg" height="300" alt="Cairn">
+</p>
+
+A minimal metadata+logging+dev toolkit library based on structlog.
 
 
 ## Dev Notes
@@ -31,5 +35,7 @@ Questions:
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+- Cookiecutter: https://github.com/audreyr/cookiecutter
+- `audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+Image at top of this document is from [here](https://www.flickr.com/photos/33452854@N06/7781520366).

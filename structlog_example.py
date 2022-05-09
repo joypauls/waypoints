@@ -1,7 +1,6 @@
 import logging
 import structlog
 import time
-from functools import wraps
 
 """
 Implementing a DAG/Tree of processors:
@@ -59,33 +58,17 @@ structlog.configure(
 logger = structlog.get_logger()
 
 
-def simple_logging_decorator(func):
-  # function to be returned
-  @wraps(func)
-  def wrapper_func(*args, **kwargs):
-    # this seems inefficient?
-    log = logger.bind(
-      id="12345678",
-    )
-    output = func(*args, **kwargs)
-    if output.get("letter"):
-      log = log.bind(letter=output["letter"])
+def test(input: dict):
+  log = logger.bind(
+    id="12345678",
+  )
+  if input.get("letter"):
+    log = log.bind(letter=input["letter"])
 
-    log.msg(output.get("message"))
-    # if output:
-    #   logger.debug(output)
-    # else:
-    #   logger.debug("")
-  return wrapper_func
-
-
-@simple_logging_decorator
-def passer(input: dict):
-  time.sleep(1)
-  return input
+  log.msg(input.get("message"))
 
 
 if __name__ == "__main__":
-  passer({"letter": "A", "message": "blah"})
-  passer({"message": "fdjfhsajdfg"})
-  passer({"message": "hey world"})
+  test({"letter": "A", "message": "blah"})
+  test({"message": "fdjfhsajdfg"})
+  test({"message": "hey world"})
