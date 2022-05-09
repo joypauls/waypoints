@@ -1,35 +1,33 @@
-=========
-Waypoints
-=========
+# Waypoints
+
+> WIP :)
+
+A minimal metadata+logging library based on structlog.
 
 
-.. image:: https://img.shields.io/pypi/v/waypoints.svg
-        :target: https://pypi.python.org/pypi/waypoints
+## Dev Notes
 
-.. image:: https://img.shields.io/travis/joypauls/waypoints.svg
-        :target: https://travis-ci.com/joypauls/waypoints
+Goals:
+- Ability to specify arbitrary handlers and sinks
+- Decorators for
+- Want something lightweight without prescribing too much
 
-.. image:: https://readthedocs.org/projects/waypoints/badge/?version=latest
-        :target: https://waypoints.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
+Motivating Problems:
+- Logging progress of long-running programs
+- Often want to log something and save the data
+- During R&D metadata sinks might change several times
 
-
-
-
-Python package
-
-
-* Free software: MIT license
-* Documentation: https://waypoints.readthedocs.io.
+Questions:
+- Does mlflow handle all of this already?
+  - If so, is there any value in something more focused?
+- What are the initial target use cases?
 
 
-Features
---------
+## Features
 
-* TODO
+- TODO
 
-Credits
--------
+## Credits
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
