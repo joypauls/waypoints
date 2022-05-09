@@ -2,6 +2,7 @@ import os
 from random import random, randint
 from mlflow import log_metric, log_param, log_artifacts
 
+
 if __name__ == "__main__":
     # Log a parameter (key-value pair)
     log_param("param1", randint(0, 100))
