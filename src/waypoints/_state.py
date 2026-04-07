@@ -25,4 +25,5 @@ class RunState:
         return self.run_dir is not None
 
 
+# initialize shared state
 _state = RunState()
