@@ -10,9 +10,7 @@ from typing import Any, Optional
 from ._state import _state
 
 
-def init_run(
-    pipeline: str, run: Optional[str] = None, base_dir: str = ".waypoints"
-) -> None:
+def init_run(pipeline: str, run: Optional[str] = None, base_dir: str = ".waypoints"):
     run_label = run or pipeline
 
     # don't want to reset everything

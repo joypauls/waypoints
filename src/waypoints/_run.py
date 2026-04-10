@@ -1,15 +1,16 @@
 import json
 from datetime import datetime
-from pathlib import Path
+
+# from pathlib import Path
 
 from ._state import _state
-from ._cache import init_run, capture_env
+from ._cache import init_run, env_snapshot
 
 
-def start(pipeline: str, run: str = None) -> None:
-    init_run(pipeline, run=run)
+def start(pipeline: str, run: str = None, base_dir: str = ".waypoints"):
+    init_run(pipeline, run=run, base_dir=base_dir)
 
-    env = capture_env()
+    env = env_snapshot()
     env_file = _state.cache_dir.parent / "env.json"
     env_file.write_text(json.dumps(env, indent=2))
 
@@ -20,7 +21,7 @@ def start(pipeline: str, run: str = None) -> None:
         print(f"waypoints: starting '{pipeline}'")
 
 
-def tag(key: str, value) -> None:
+def tag(key: str, value):
     if not _state.active:
         raise RuntimeError("No active run. Call wp.start() first.")
     _state.tags[key] = value
@@ -33,7 +34,7 @@ def _format_duration(seconds: float) -> str:
     return f"{m}m {s}s"
 
 
-def done() -> None:
+def done():
     if not _state.active:
         raise RuntimeError("No active run. Call wp.start() first.")
 
