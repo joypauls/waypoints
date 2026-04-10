@@ -35,7 +35,7 @@ def cache_write(key: str, value: Any) -> bool:
     try:
         path.write_bytes(pickle.dumps(value))
         return True
-    except (pickle.PicklingError, TypeError):
+    except Exception:
         return False
 
 
