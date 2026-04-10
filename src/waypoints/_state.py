@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
+from datetime import datetime
 
 
 @dataclass
@@ -11,6 +12,7 @@ class RunState:
     cache_dir: Optional[Path] = None
     tags: dict = field(default_factory=dict)
     steps: dict = field(default_factory=dict)
+    start_time: Optional[datetime] = None
 
     def reset(self):
         self.pipeline = None
@@ -19,6 +21,7 @@ class RunState:
         self.cache_dir = None
         self.tags = {}
         self.steps = {}
+        self.start_time = None
 
     @property
     def active(self) -> bool:

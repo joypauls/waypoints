@@ -29,6 +29,8 @@ def init_run(
     _state.run_dir = pipeline_dir / "runs" / run_label
     _state.run_dir.mkdir(parents=True, exist_ok=True)
 
+    _state.start_time = datetime.now()
+
 
 def cache_write(key: str, value: Any) -> bool:
     path = _state.cache_dir / f"{key}.pkl"
