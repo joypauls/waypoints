@@ -1,0 +1,13 @@
+title: Your Project
+description: Documentation for Your Project
+
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+
+plugins:
+  - jekyll-remote-theme
+
+url: https://joypauls.github.io
+baseurl: /waypoints
+
+color_scheme: light
+search_enabled: true
