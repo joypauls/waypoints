@@ -1,7 +1,7 @@
-title: Your Project
-description: Documentation for Your Project
-
+title: Waypoints
+description: Documentation
 remote_theme: just-the-docs/just-the-docs@v0.12.0
+favicon_ico: "/assets/images/favicon.ico"
 
 plugins:
   - jekyll-remote-theme
