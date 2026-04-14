@@ -1,6 +1,6 @@
 # Waypoints [WIP]
 
-Waypoints makes multi-step Python workflows durable.
+A simple utility for making multi-step Python workflows durable.
 
 Built for messy experimental work: notebooks, ad-hoc scripts, feature engineering, model iteration - anywhere you find yourself rerunning the same steps or manually saving intermediate outputs.
 
