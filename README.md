@@ -1,29 +1,40 @@
 # Waypoints [WIP]
 
-A simple utility for giving data science development workflows memory with zero dependencies. Whether you use it with messy notebook code or to decorate functions, Waypoints can help reduce your cognitive load and save you time and compute rerunning expensive steps.
+Waypoints makes multi-step Python workflows durable.
 
-## Features
+Built for messy experimental work: notebooks, ad-hoc scripts, feature engineering, model iteration - anywhere you find yourself rerunning the same steps or manually saving intermediate outputs.
 
-No server, no UI, just local files.
+## Core Concepts
 
-- simple object persistence
+- **run** — a named execution session for a pipeline. Created with `wp.start()`. All operations hang off the run object.
+- **step** — a named unit of work within a run. Produces a value. Reused if already complete.
+- **reuse** — when a step's saved result is returned without recomputing.
+- **recompute** — when a step is run fresh, either because it hasn't run before or was cleared.
+- **cascade** — when a step is recomputed, all steps after it in execution order are automatically invalidated.
+
+## Install
+
+```
+pip install waypoints
+```
+
+## How It Works
+
+### Example
+
+### Branching
+
+### What's On Disk
+
+```
+.waypoints/
+```
 
 ## Why?
 
-Nothing did exactly what I wanted so I kept developing the same bespoke functionality over and over again that was tangential to my actual project at hand. While my teams have adopted heavier MLOps pipeline frameworks for production, initial development and the experimental phase is usually ad-hoc and cumbersome. Staying resilient to kernel restarts in a notebook environment, saving intermediate reults, reusing artifacts across different runs, recording what happened; it can get messy. I wanted something to help me focus on what's important but doesn't impose too much structure. Notebooks are popular because they allow for a sort of "stream of conciousness" approach to coding, and anything that takes away from that too much will be tough to accept, even for me.
-
 Ultimately I built this for my own workflow first and now I'm hoping others find it useful too!
 
----
+Experimental work tends to be fast-moving and a bit unstructured. You run a few steps, inspect the output, tweak something upstream, and rerun. You save intermediate results when things get expensive, but those saves are usually ad-hoc pickle files here, CSVs there, maybe a log file or two. After a restart or a few days away, it’s not always clear what was run, what can be reused, or what needs to be recomputed. Waypoints is meant to cover some middle ground:
 
-## Aren't there tools out there for this already?
-
-There are many out there that overlap and are very good. Most of them aim do much more than this tool does. Waypoints is trying to solve a small subset of related problems to help in the messy experimental phase - when projects are iterating fast and people are resistent to heavy frameworks. While it's certainly safe for production, that's not what it's built for and you will probably end up wanting a more robust pipeline framework.
-
-Libraries/tools that inspired design choices:
-
-- MLflow
-- Prefect
-- joblib
-- Hamilton
-- ipycache
+- more structured than one-off saves and glue code
+- much lighter than a full orchestration or MLOps framework
