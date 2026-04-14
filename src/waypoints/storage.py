@@ -33,3 +33,16 @@ class LocalStorage:
         raw = pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
         path.write_bytes(raw)
         return _short_hash(raw)
+
+    def load_step(
+        self, pipeline: str, run_name: str, step_name: str
+    ) -> tuple[Any, str]:
+        """Return (value, short_hash). Raises FileNotFoundError if absent."""
+        path = self._step_path(pipeline, run_name, step_name)
+        raw = path.read_bytes()
+        return pickle.loads(raw), _short_hash(raw)
+
+    def delete_step(self, pipeline: str, run_name: str, step_name: str) -> None:
+        path = self._step_path(pipeline, run_name, step_name)
+        if path.exists():
+            path.unlink()
