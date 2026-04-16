@@ -11,7 +11,6 @@ def _short_hash(data: bytes, length: int = 6) -> str:
 class LocalStorage:
     """
     Persist step results to a local directory.
-
     Layout:  .waypoints/<pipeline>/<run>/<step>.pkl
     """
 
@@ -43,6 +42,4 @@ class LocalStorage:
         return pickle.loads(raw), _short_hash(raw)
 
     def delete_step(self, pipeline: str, run_name: str, step_name: str) -> None:
-        path = self._step_path(pipeline, run_name, step_name)
-        if path.exists():
-            path.unlink()
+        self._step_path(pipeline, run_name, step_name).unlink(missing_ok=True)

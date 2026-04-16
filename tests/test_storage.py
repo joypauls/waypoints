@@ -37,10 +37,10 @@ def test_save_returns_hash(storage):
 
 
 def test_load_roundtrip(storage):
-    storage.save_step(PIPELINE, RUN, "s", {"key": "value"})
-    value, h = storage.load_step(PIPELINE, RUN, "s")
+    h_save = storage.save_step(PIPELINE, RUN, "s", {"key": "value"})
+    value, h_load = storage.load_step(PIPELINE, RUN, "s")
     assert value == {"key": "value"}
-    assert len(h) == 6
+    assert h_load == h_save
 
 
 def test_load_missing_raises(storage):
@@ -60,7 +60,8 @@ def test_delete_nonexistent_is_silent(storage):
 
 
 @pytest.mark.parametrize("value", [42, 3.14, "hello", [1, 2], {"a": 1}, None])
-def test_pickle_roundtrip(storage, value):
+def test_roundtrip(storage, value):
+    """Basically the primary storage e2e test."""
     storage.save_step(PIPELINE, RUN, "s", value)
     loaded, _ = storage.load_step(PIPELINE, RUN, "s")
     assert loaded == value
