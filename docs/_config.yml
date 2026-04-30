@@ -1,0 +1,13 @@
+title: Waypoints
+description: Documentation
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+favicon_ico: "/assets/images/favicon.ico"
+
+plugins:
+  - jekyll-remote-theme
+
+url: https://joypauls.github.io
+baseurl: /waypoints
+
+color_scheme: light
+search_enabled: true
